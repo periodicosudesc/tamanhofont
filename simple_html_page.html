@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Página Simples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid #00ff88;
+        }
+        
+        .button {
+            background: linear-gradient(45deg, #00ff88, #00b4db);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+        }
+        
+        .interactive-area {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 255, 136, 0.2);
+            border-radius: 10px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 Bem-vindo à Minha Página! 🌟</h1>
+        
+        <div class="section">
+            <h2>Sobre Esta Página</h2>
+            <p>Esta é uma página HTML simples com design moderno e interativo. Ela inclui:</p>
+            <ul>
+                <li>Design responsivo com gradientes</li>
+                <li>Efeitos de vidro (glassmorphism)</li>
+                <li>Animações suaves</li>
+                <li>Interatividade com JavaScript</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Meus Interesses</h2>
+            <p>Gosto de tecnologia, programação e design web. Esta página demonstra algumas técnicas modernas de CSS e JavaScript.</p>
+        </div>
+        
+        <div class="interactive-area">
+            <h2>Área Interativa</h2>
+            <button class="button" onclick="showMessage()">Clique Aqui!</button>
+            <button class="button" onclick="changeColor()">Mudar Cor</button>
+            <button class="button" onclick="showTime()">Mostrar Hora</button>
+            
+            <div id="output">
+                <p>Clique em um botão para ver a mágica acontecer! ✨</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let colorIndex = 0;
+        const colors = [
+            'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+            'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+            'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+            'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+        ];
+
+        function showMessage() {
+            const messages = [
+                "Olá! Que bom te ver aqui! 👋",
+                "Espero que esteja gostando da página! 😊",
+                "Programar é incrível, não é? 💻",
+                "Obrigado por visitar! 🙏",
+                "Que tal explorar mais? 🚀"
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('output').innerHTML = `<p>${randomMessage}</p>`;
+        }
+
+        function changeColor() {
+            colorIndex = (colorIndex + 1) % colors.length;
+            document.body.style.background = colors[colorIndex];
+            document.getElementById('output').innerHTML = '<p>Cor alterada! Que tal? 🎨</p>';
+        }
+
+        function showTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('pt-BR');
+            document.getElementById('output').innerHTML = `<p>Agora são: ${timeString} ⏰</p>`;
+        }
+
+        // Adiciona um efeito de entrada suave
+        window.addEventListener('load', function() {
+            document.querySelector('.container').style.opacity = '0';
+            document.querySelector('.container').style.transform = 'translateY(20px)';
+            document.querySelector('.container').style.transition = 'all 0.5s ease';
+            
+            setTimeout(() => {
+                document.querySelector('.container').style.opacity = '1';
+                document.querySelector('.container').style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
